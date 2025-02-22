@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 IConfiguration configuration = builder.Configuration;
 
 //IdentityModelEventSource.ShowPII = true;
-
+builder.Services.AddHealthChecks();
 AddTokenValidation(builder, configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -32,7 +32,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.MapHealthChecks("/health");
 app.Run();
 
 static void AddTokenValidation(WebApplicationBuilder builder, IConfiguration configuration)
