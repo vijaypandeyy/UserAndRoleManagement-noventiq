@@ -31,7 +31,9 @@ env:
 
 on:
   push:
-    branches: [ "master" ]
+    branches: 
+      - develop
+      - feature/* 
   workflow_dispatch:
 
 permissions:
