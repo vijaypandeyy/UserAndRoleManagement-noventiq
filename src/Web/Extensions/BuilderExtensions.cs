@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Application;
+using Infrastructure;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Runtime.CompilerServices;
 
 namespace Web.Extensions
 {
@@ -9,13 +12,13 @@ namespace Web.Extensions
 
         public static IServiceCollection AddApplicationLayer(this IServiceCollection services, IConfiguration configuration)
         {
-
+            services.AddApplicationServices(configuration);
             return services;
         }
 
         public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
         {
-
+           services.AddInfrastructureServices(configuration);
             return services;
         }
 

@@ -1,12 +1,7 @@
 ﻿using Application.Repositories;
 using Core;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -29,7 +24,7 @@ namespace Infrastructure.Repositories
 
         }
 
-        public Task<bool> DeleteAsync(int id)
+        public Task<bool> DeleteAsync(Guid id)
         {
             throw new NotImplementedException();
         }

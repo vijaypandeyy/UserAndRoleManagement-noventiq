@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Logging;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +13,7 @@ builder.AddTokenValidation(configuration);
 builder.Services.AddEndpointsApiExplorer();
 
 builder.AddSwaggerSettings();
+builder.Services.AddInfrastructureLayer(configuration);
 builder.Services.AddApplicationLayer(configuration);
 
 var app = builder.Build();

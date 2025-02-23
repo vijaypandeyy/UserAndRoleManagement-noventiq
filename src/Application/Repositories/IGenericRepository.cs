@@ -10,6 +10,6 @@ namespace Application.Repositories
         IQueryable<T> GetQueryable(); 
         Task AddAsync(T entity);
         Task UpdateAsync(T entity);
-        Task<bool> DeleteAsync(int id);
+        Task<bool> DeleteAsync(Guid id);
     }
 }
