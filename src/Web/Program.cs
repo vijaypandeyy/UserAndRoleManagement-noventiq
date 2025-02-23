@@ -1,4 +1,5 @@
 using Web.Extensions;
+using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,7 @@ builder.Services.AddInfrastructureLayer(configuration);
 builder.Services.AddApplicationLayer(configuration);
 
 var app = builder.Build();
+await app.Services.InitializeDBAsync();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Local")

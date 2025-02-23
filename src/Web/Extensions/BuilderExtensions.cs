@@ -18,14 +18,13 @@ namespace Web.Extensions
 
         public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
         {
-           services.AddInfrastructureServices(configuration);
+            services.AddInfrastructureServices(configuration);
             return services;
         }
 
         public static IServiceCollection AddWebLayer(this WebApplicationBuilder builder, IConfiguration configuration)
         {
-            //AddTokenValidation(builder, configuration);
-            //AddSwaggerSettings(builder);
+            
             return builder.Services;
         }
         public static void AddTokenValidation(this WebApplicationBuilder builder, IConfiguration configuration)
