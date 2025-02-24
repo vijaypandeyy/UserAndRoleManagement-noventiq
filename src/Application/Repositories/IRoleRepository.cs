@@ -2,7 +2,7 @@
 
 namespace Application.Repositories
 {
-    interface IRoleRepository: IGenericRepository<Role>
+    public interface IRoleRepository : IGenericRepository<Role>
     {
     }
 }

@@ -7,7 +7,7 @@ namespace Application.Services
 {
     public interface IUserService
     {
-        Task<Result<GetUserResponseModel>> GetUserByIdAsync(string id);
+        Task<Result<GetUserResponseModel>> GetUserByIdAsync(Guid id);
 
         // Task<> GetUsersByFilterAsync();
         Task<Result<string>> AddUserAsync(AddUserRequestModel user);

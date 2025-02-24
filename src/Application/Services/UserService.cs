@@ -27,9 +27,9 @@ namespace Application.Services
             return Result<string>.SuccessResult("User Deleted successfully");
         }
 
-        public async Task<Result<GetUserResponseModel>> GetUserByIdAsync(string id)
+        public async Task<Result<GetUserResponseModel>> GetUserByIdAsync(Guid id)
         {
-            var user = await _userRepository.GetByIdAsync(Guid.Parse(id));
+            var user = await _userRepository.GetByIdAsync(id);
             var res= user?.Adapt<GetUserResponseModel>();
 
             return Result<GetUserResponseModel>.SuccessResult(res);

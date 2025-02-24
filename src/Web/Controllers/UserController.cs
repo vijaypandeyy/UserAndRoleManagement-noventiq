@@ -3,6 +3,7 @@ using Application.Services;
 using Application.Models.Response;
 using Application.Models.Common;
 using Application.Models.Requests;
+using Azure.Core;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Web.Controllers
@@ -23,11 +24,11 @@ namespace Web.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<UserController>/5
+        // GET api/<UserController>/uuid
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string email)
+        public async Task<IActionResult> Get(Guid id)
         {
-            var result = await _userService.GetUserByIdAsync(email);
+            var result = await _userService.GetUserByIdAsync(id);
             return StatusCode(result.StatusCode, result);
         }
 
@@ -41,14 +42,18 @@ namespace Web.Controllers
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Guid id, [FromBody] UpdateUserRequestModel request)
         {
+            var result = await _userService.UpdateUserAsync(request);
+            return StatusCode(result.StatusCode, result);
         }
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            var result = await _userService.DeleteUserAsync(id);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }
