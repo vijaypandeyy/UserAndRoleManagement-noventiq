@@ -24,9 +24,7 @@ namespace Web.Extensions
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly("Web")));
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IUserRepository, UserRepository>();
-
+            
             services.AddInfrastructureServices(configuration);
             return services;
         }

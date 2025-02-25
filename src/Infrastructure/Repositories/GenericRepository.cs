@@ -16,17 +16,18 @@ namespace Infrastructure.Repositories
             _dbSet = _context.Set<T>();
         }
 
-        public async Task AddAsync(T entity)
+        public virtual async Task AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
 
-
         }
 
-        public Task<bool> DeleteAsync(Guid id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            await _dbSet.Where(x => x.Id == id).ExecuteDeleteAsync();
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public Task<IQueryable<T>> FindAsync(Expression<Func<T, bool>> predicate)
@@ -34,7 +35,7 @@ namespace Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<T?> GetByIdAsync(Guid id)
+        public virtual async Task<T?> GetByIdAsync(Guid id)
         {
             return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
@@ -44,7 +45,7 @@ namespace Infrastructure.Repositories
             return _dbSet.AsQueryable();
         }
 
-        public async Task UpdateAsync(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();

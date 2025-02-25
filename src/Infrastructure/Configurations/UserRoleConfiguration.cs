@@ -1,6 +1,7 @@
 ﻿using Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Emit;
 
 namespace Infrastructure.Configurations
 {
@@ -12,7 +13,9 @@ namespace Infrastructure.Configurations
             builder.HasKey(u => u.Id); 
             builder.Property(u => u.UserId).IsRequired();
             builder.Property(u => u.RoleId).IsRequired();
-           // builder.HasIndex(u => u.Email).IsUnique();
+            // builder.HasIndex(u => u.Email).IsUnique();
+
+           
         }
     }
 }

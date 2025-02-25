@@ -21,11 +21,11 @@ var app = builder.Build();
 await app.Services.InitializeDBAsync();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Local")
-{
+//if (app.Environment.IsDevelopment() || app.Environment.EnvironmentName == "Local")
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseHttpsRedirection();
 
