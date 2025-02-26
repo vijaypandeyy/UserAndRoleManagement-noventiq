@@ -18,14 +18,23 @@ namespace Web.Controllers
             _userService = userService;
         }
         // GET: api/<UserController>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<UserController>/uuid
+       /// <summary>
+       /// Get USer by ID
+       /// </summary>
+       /// <param name="id">id for user</param>
+       /// <returns></returns>
         [HttpGet("{id}")]
+        
         public async Task<IActionResult> Get(Guid id)
         {
             var result = await _userService.GetUserByIdAsync(id);
@@ -33,6 +42,11 @@ namespace Web.Controllers
         }
 
         // POST api/<UserController>
+        /// <summary>
+        /// Create a new user
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] AddUserRequestModel request)
         {
@@ -41,6 +55,12 @@ namespace Web.Controllers
         }
 
         // PUT api/<UserController>/5
+        /// <summary>
+        /// Update existing user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(Guid id, [FromBody] UpdateUserRequestModel request)
         {
@@ -48,7 +68,27 @@ namespace Web.Controllers
             return StatusCode(result.StatusCode, result);
         }
 
+        // Patch api/<UserController>/5
+        /// <summary>
+        /// Update existing user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Put(Guid id, [FromBody] UpdatePasswordRequestModel request)
+        {
+            request.SetId(id);
+           /var result = await _userService.UpdateUserAsync(null);
+            return StatusCode(result.StatusCode, null);
+        }
+
         // DELETE api/<UserController>/5
+        /// <summary>
+        /// Delete User
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

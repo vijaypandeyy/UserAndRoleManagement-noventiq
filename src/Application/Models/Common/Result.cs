@@ -47,5 +47,6 @@ namespace Application.Models.Common
         public static Result<T> Forbidden(string error) => FailureResult(error, HttpStatusCode.Forbidden, "Access denied");
         public static Result<T> NotFound(string error) => FailureResult(error, HttpStatusCode.NotFound, "Resource not found");
         public static Result<T> ServerError(string error) => FailureResult(error, HttpStatusCode.InternalServerError, "Internal server error");
+        public static Result<T> ServerError(List<string> errors) => FailureResult(errors, HttpStatusCode.InternalServerError, "Internal server error");
     }
 }

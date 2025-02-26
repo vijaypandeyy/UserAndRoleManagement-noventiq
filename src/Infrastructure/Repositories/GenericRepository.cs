@@ -26,7 +26,7 @@ namespace Infrastructure.Repositories
         public async Task<bool> DeleteAsync(Guid id)
         {
             await _dbSet.Where(x => x.Id == id).ExecuteDeleteAsync();
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             return true;
         }
 
