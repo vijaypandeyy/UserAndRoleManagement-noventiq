@@ -43,5 +43,37 @@ namespace Infrastructure.Repositories
             }
             await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> UpdatePassword(Guid id, string oldPassword, string newPassword)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            if (user == null)
+                return false;
+
+            var hasher = new PasswordHasher<object>();
+            var oldPasswordHash = hasher.HashPassword(null, oldPassword);
+            var newPasswordHash = hasher.HashPassword(null, newPassword);
+
+            if ((oldPasswordHash) != newPasswordHash)
+            {
+                user.Password = newPasswordHash;
+            }
+            await _context.SaveChangesAsync();
+
+            return true;
+
+            // throw new NotImplementedException();
+        }
+
+        public override async Task<User?> GetByIdAsync(Guid id)
+        {
+            var user = await _context.Users
+                  .Where(x => x.Id == id)
+                  .Include(x => x.Roles)
+                  .ThenInclude(x => x.Role)
+                  .FirstOrDefaultAsync();
+
+            return user;
+        }
     }
 }

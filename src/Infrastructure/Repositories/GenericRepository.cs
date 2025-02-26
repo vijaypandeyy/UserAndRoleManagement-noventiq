@@ -30,7 +30,7 @@ namespace Infrastructure.Repositories
             return true;
         }
 
-        public Task<IQueryable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
             throw new NotImplementedException();
         }
