@@ -45,10 +45,11 @@ namespace UnitTests.Repositories
         public async Task DeleteAsync()
         {
             var user = FakeDataGenerator.GenerateFakeUser();
-            _context.Users.Add(user);
-
+            _context.Add<User>(user);
+            _context.SaveChanges();
             await _userRepository.DeleteAsync(user.Id);
             Thread.Sleep(1000);
+
            var dbres= _context.Find<User>(user.Id);
             dbres.Should().BeNull();
         }
@@ -63,7 +64,8 @@ namespace UnitTests.Repositories
         public async Task GetByIdAsync()
         {
             var user = FakeDataGenerator.GenerateFakeUser();
-            _context.Users.Add(user);
+            _context.Add<User>(user);
+            _context.SaveChanges();
 
             var result = await _userRepository.GetByIdAsync(user.Id);
             result.Username.Should().Be(user.Username);
