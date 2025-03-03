@@ -16,13 +16,13 @@ UserAndRoleManagement.sln
 │   ├── /Application # [Business logic and service layer] (**Project| Library**)  
 │   ├── /Core # [ Domain entities ] (**Project| Library**)  
 │   ├── /Infrastructure # [Infra related code such as db] (**Project| Library**)  
-│   └── /Web # [API  ]  (**Project| Library**)   
+│   └── /Web #  (**Project|API**)   
 |           ├── Properties  
 |           |     ├── launchsettings.json    
 |           ├── application.Local.json  
 |           ├── application.json  
 |
-├── /tests  # Unit and integration tests (**Project| Library**)   
+├── /tests  # Unit and integration tests (**Project**)   
 ├── UserAndRoleManagement.sln   
 └── README.md
  
