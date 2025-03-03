@@ -70,7 +70,7 @@ namespace Web.Controllers
 
         // Patch api/<UserController>/5
         /// <summary>
-        /// Update existing user
+        /// Update existing user password
         /// </summary>
         /// <param name="id"></param>
         /// <param name="request"></param>
@@ -79,7 +79,7 @@ namespace Web.Controllers
         public async Task<IActionResult> Put(Guid id, [FromBody] UpdatePasswordRequestModel request)
         {
             request.SetId(id);
-           /var result = await _userService.UpdateUserAsync(null);
+           var result = await _userService.UpdateUserAsync(null);
             return StatusCode(result.StatusCode, null);
         }
 
